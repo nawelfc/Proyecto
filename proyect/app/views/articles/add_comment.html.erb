@@ -1,0 +1,28 @@
+<p>
+  <strong>Agrega un comentario:</strong>
+</p>
+ 
+<p>
+	<%= form_for :comment, url: create_comment_article_path(@article) do |f| %>
+	
+	<% @comment.errors.each do |attr,msg|  %>
+		 <%= attr %> - <%=msg%>
+		 <br/>
+	<% end %>
+
+	<p>
+    	<strong><%= f.label :Tu_nombre %></strong>
+   		<br>
+    	<%= f.text_field :commenter %>
+    </p>
+ 	<p>
+ 	  <strong><%= f.label :Texto %><br></strong>
+  	  <%= f.text_area :text %>
+ 	</p>
+ 
+  	<p>
+    	<%= f.submit :Guardar %>
+  	</p>
+	<% end %>
+
+</p>

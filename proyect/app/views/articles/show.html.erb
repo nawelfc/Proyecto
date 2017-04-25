@@ -1,0 +1,25 @@
+
+<div>
+	<div>
+		<%= image_tag @article.foto.url(:medium) %>
+	</div>
+
+	<div>
+		<p>
+	  		<strong>Titulo:</strong>
+	  		<%= @article.title %>
+			<br/>
+	  		<strong>Texto:</strong>
+	  		<%= @article.text %>
+		</p>
+	</div>
+</div>
+<%= link_to 'Atras', articles_path %>
+<br/>
+<br/>
+<p>
+	<strong>Comentarios:</strong>
+	<br/>
+	<%= render @article.comments %>
+</p>
+<%= link_to 'Comentar', add_comment_article_path(@article) %>
