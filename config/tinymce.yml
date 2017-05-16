@@ -1,0 +1,9 @@
+toolbar:
+  - styleselect | bold italic | undo redo
+  - image | link
+plugins:
+  - image
+  - link
+forced_root_block: ""
+force_br_newlines : true
+force_p_newlines : false

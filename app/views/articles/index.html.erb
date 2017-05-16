@@ -1,0 +1,44 @@
+<h1>Listado de articulos</h1>
+<%= link_to 'Inicio', root_path %> | <%= link_to 'Template', '/start' %>
+<% if user_signed_in? %>
+<%= link_to 'Nuevo articulo', new_article_path %> | <%= link_to 'Emails', "/letter_opener" %> | 
+<% end %>
+
+<%= form_tag(main_index_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Buscador de articulos" %>
+<%= submit_tag "Buscar" %>
+<% end %>
+
+<br/>
+<br/>
+<% if @articles.present? %>
+  <table>
+    <tr align="center">
+      <th>Imagen</th>
+      <th>Titulo</th>
+      <th>Texto</th>
+    </tr>
+   
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= image_tag article.foto.url(:thumb) %> </td>  
+        <td> <%= article.title %> </td>
+        <td> <%= article.text %> </td>
+        <td> <%= link_to 'Mostrar', article_path(article) %>
+        <% if user_signed_in? %>
+             | <%= link_to 'Edit', edit_article_path(article) %> | 
+            <%= link_to 'Eliminar', article_path(article),
+                method: :delete,
+                data: { confirm: 'Estas seguro de eliminar este articulo?' } %>
+        <% end %>
+      </td>
+      </tr>
+    <% end %>
+  </table>
+  <% else %>
+   <p>No hay ningun articulo con "<%= params[:search] %>".</p>
+<% end %>
+
+<% if params[:search] == nil %>
+  <%= paginate @articles %>
+<% end %>

@@ -1,0 +1,21 @@
+<%= form_for :article, url: articles_path, html: { multipart: true } do |f| %>
+  <p>
+    <strong><%= f.label :titulo %></strong>
+    <br>
+    <%= f.text_field :title %>
+  </p>
+ 
+ 
+    <strong><%= f.label :texto %><br></strong>
+
+    <%= f.text_area :text, :class => "tinymce", :rows => 10, :cols => 30 %>
+    <%= tinymce %>
+
+  
+  <%= f.file_field :foto %>
+ <br>
+  <p>
+    <%= f.submit :Guardar %>
+  </p>
+<% end %>
+<%= link_to 'Atras', root_path %>

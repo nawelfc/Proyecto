@@ -1,0 +1,61 @@
+
+
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    
+  <script type="text/javascript">
+		var someimage = document.getElementById('this_one').firstChild.getAttribute('src');
+		document.getElementById("myDiv").style.backgroundImage= "url(/system/articles/fotos/000/000/001/original/Linux-wallpapers-22-800x600.jpg?1492646382)";
+		    	   	
+	</script>
+
+
+	    <header class="intro-header" id="myDiv">
+
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	                    <div class="post-heading">
+	                        <h1><%= @article.title %></h1><p id="demo"></p>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    <div class="image_post" id="this_one" style="visibility: hidden;"><%= image_tag @article.foto.url %></div>	
+	
+	    </header>
+    
+
+
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <%= @article.text %>
+                </div>
+            </div>
+        </div>
+    </article>
+	<h3><%= link_to 'Atras', root_path %></h3>
+    <hr>
+
+	<h2>Comentarios:</h2>
+
+	<h3><%= render @article.comments %></h3>
+
+	<h3><%= link_to 'Comentar', add_comment_article_path(@article) %></h3>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <hr>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
